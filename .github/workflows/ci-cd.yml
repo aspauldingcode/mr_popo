@@ -1,0 +1,30 @@
+name: Monorepo CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v27
+      
+      - name: Install & Test
+        run: |
+          nix develop --command bash -c "npm install && npm run lint && npm run test"
+
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Replit
+        run: |
+          echo "Deploying bot and dashboard to Replit..."
+          # In a real scenario, use Replit CLI or webhook
+          # Replit's GitHub integration handles auto-pull on push.

@@ -1,0 +1,12 @@
+{
+    "name": "mr-popo-system",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "test": "npm run test --workspaces --if-present",
+        "lint": "npm run lint --workspaces --if-present",
+        "format:check": "npm run format:check --workspaces --if-present"
+    }
+}
