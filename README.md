@@ -56,6 +56,35 @@ npm install
 npm run dev --workspaces
 ```
 
+## Deployment to Replit
+
+Since your code is already on GitHub, follow these steps to host MR_POPO on Replit:
+
+1. **Import to Replit**:
+   - Go to [Replit](https://replit.com) and click **+ Create Repl**.
+   - Click **Import from GitHub** in the top right.
+   - Select or search for the repository: `aspauldingcode/mr_popo`.
+   - Click **Import from GitHub**.
+
+2. **Configure Secrets**:
+   - In your new Repl, open the **Tools** tab in the sidebar and click **Secrets**.
+   - Add the following keys (copy values from your `.env` files):
+     - `DISCORD_TOKEN`
+     - `DISCORD_CLIENT_ID`
+     - `DISCORD_CLIENT_SECRET`
+     - `SESSION_SECRET`
+     - `GUILD_ID`
+     - `DASHBOARD_PORT` (set to `3001`)
+     - `WATCHED_USER_ID`
+     - `PROTECTED_USER_ID`
+     - `LOG_CHANNEL_ID` (optional)
+
+3. **Run**:
+   - Click the green **Run** button at the top. Replit will automatically detect the `.replit` configuration and start both the bot and the dashboard!
+
+4. **Stay Alive** (Optional but Recommended):
+   - Use a service like [UptimeRobot](https://uptimerobot.com) to ping your Replit web address (the one shown in the webview above the code) every 5 minutes to keep the bot from sleeping.
+
 ## Testing
 Run the automated test suite natively inside the Nix shell:
 ```bash
